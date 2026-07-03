@@ -1,4 +1,4 @@
-class_name FiniteStateMachine
+class_name FSM
 extends FSMState
 
 signal pre_state_change_values(current: StringName, next: StringName)
@@ -6,7 +6,6 @@ signal pre_state_change
 signal state_change_values(previous: StringName, current: StringName)
 signal state_change
 
-@export var _verbose: bool = false
 @export var _is_root: bool = true
 @export var _assert_all_children_are_states: bool = true
 

@@ -98,11 +98,11 @@ func test_invalid_force_transition_does_not_change_state() -> TestCaseResult:
 	return TestCaseResult.from_equals(&"idle", machine.state)
 
 
-func _create_machine() -> FiniteStateMachine:
-	var definition := FiniteStateMachineDefinition.new()
+func _create_machine() -> FSM:
+	var definition := FSM.new()
 	definition.states = [&"idle", &"running"]
 
-	var machine := FiniteStateMachine.new()
+	var machine := FSM.new()
 	machine.definition = definition
 	machine._state = "idle"
 	return machine

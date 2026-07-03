@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3qgbh04ys1yl"]
 
-[ext_resource type="Script" uid="uid://dad86vcrwf4he" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="1_iqwhg"]
-[ext_resource type="Script" uid="uid://c1n735u73egq0" path="res://addons/finite_state_machine/scripts/FSM_state.gd" id="2_5dd1b"]
+[ext_resource type="Script" uid="uid://dad86vcrwf4he" path="res://addons/finite_state_machine/scripts/fsm.gd" id="1_iqwhg"]
+[ext_resource type="Script" path="res://addons/finite_state_machine/scripts/FSM_state.gd" id="2_5dd1b"]
 
 [node name="Example" type="Control" unique_id=200112619]
 layout_mode = 3
@@ -14,12 +14,15 @@ metadata/_custom_type_script = "uid://dad86vcrwf4he"
 
 [node name="Spawn" type="Node" parent="FiniteStateMachine" unique_id=1527705237]
 script = ExtResource("2_5dd1b")
+_verbose = true
 metadata/_custom_type_script = "uid://c1n735u73egq0"
 
 [node name="InPlay" type="Node" parent="FiniteStateMachine" unique_id=708085600]
 script = ExtResource("2_5dd1b")
+_verbose = true
 metadata/_custom_type_script = "uid://c1n735u73egq0"
 
 [node name="Destroying" type="Node" parent="FiniteStateMachine" unique_id=598957485]
 script = ExtResource("2_5dd1b")
+_verbose = true
 metadata/_custom_type_script = "uid://c1n735u73egq0"
