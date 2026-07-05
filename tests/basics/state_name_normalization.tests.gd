@@ -55,7 +55,7 @@ func test_transitionTargets_areCaseInsensitive():
 	machine.force_transition_to("start")
 
 	return [
-		TestCaseResult.from_equals(&"START", machine.state),
+		TestCaseResult.from_equals(&"START", machine.state_name),
 		TestCaseResult.from_equals(true, machine.is_state("Start")),
 		TestCaseResult.from_equals(true, machine.is_state("START")),
 		TestCaseResult.from_equals(true, machine.is_state("start")),
@@ -70,6 +70,6 @@ func test_tryTransitionTargets_areCaseInsensitive():
 
 	return [
 		TestCaseResult.from_equals(true, transitioned),
-		TestCaseResult.from_equals(&"START", machine.state),
+		TestCaseResult.from_equals(&"START", machine.state_name),
 		TestCaseResult.from_equals(true, machine.is_state("start")),
 	]
