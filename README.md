@@ -1,5 +1,7 @@
 # Finite State Machine
 
+THIS DOC IS OUTDATED
+
 Small Godot state machine utility for tracking a named state and emitting signals around changes.
 
 ## Public API
