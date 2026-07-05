@@ -59,6 +59,8 @@ func _load_state_nodes() -> void:
 
 
 func create_state(state_name: StringName) -> FSMState:
+	state_name = state_name.to_upper()
+
 	if has_state(state_name):
 		push_error("%s already has state \"%s\"" % [self, state_name])
 		return null
@@ -87,10 +89,12 @@ func add_state(state_node: FSMState) -> void:
 ## Returns whether the current state matches target_state.
 ## Pushes an error and returns false when target_state is not declared.
 func is_state(target_state: StringName) -> bool:
+	target_state = target_state.to_upper()
+
 	if not has_state(target_state):
 		_push_missing_state_error(target_state)
 		return false
-	return state == target_state.to_lower()
+	return state == target_state
 
 
 func has_state(target_state: StringName) -> bool:
