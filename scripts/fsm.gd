@@ -24,6 +24,10 @@ var state_name: StringName:
 	get:
 		return _state_name
 
+var state_node: FSMState:
+	get:
+		return _states.get(_state_name, null)
+
 var _state_name: StringName:
 	set(value):
 		_state_name = value.to_upper()
