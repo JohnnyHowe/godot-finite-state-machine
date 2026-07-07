@@ -48,27 +48,27 @@ func _enter_tree() -> void:
 		return
 
 	if not has_state(_initial_state):
-		push_warning("%s initial state_name (\"%s\") not found! Transitioning to first found." % [self, _initial_state])
+		push_warning("%s initial state_name (\"%s\") not found! Transitioning to first found." % [ self , _initial_state])
 		force_transition_to(_states.keys()[0])
 
 
 func _load_state_nodes() -> void:
 	for node in get_children():
 		if node is not FSMState:
-			assert(not _assert_all_children_are_states, "FSM %s has child %s that is not FSM states!" % [self, node])
+			assert(not _assert_all_children_are_states, "FSM %s has child %s that is not FSM states!" % [ self , node])
 		else:
 			_states[node.name.to_upper()] = node
 
 	if _verbose:
 		var state_names_bullet_points = _states.keys().map(func(state_name): return "\n - %s" % state_name)
-		print("%s loaded states:" % self + "".join(state_names_bullet_points))
+		print("%s loaded states:" % self +"".join(state_names_bullet_points))
 
 
 func create_state(state_name: StringName) -> FSMState:
 	state_name = state_name.to_upper()
 
 	if has_state(state_name):
-		push_error("%s already has state_name \"%s\"" % [self, state_name])
+		push_error("%s already has state_name \"%s\"" % [ self , state_name])
 		return null
 
 	var node := FSMState.new()
@@ -81,7 +81,7 @@ func add_state(state_node: FSMState) -> void:
 	var key := state_node.name.to_upper()
 
 	if has_state(key):
-		push_error("%s already has state_name \"%s\"" % [self, key])
+		push_error("%s already has state_name \"%s\"" % [ self , key])
 		return
 
 	add_child(state_node)
@@ -89,7 +89,7 @@ func add_state(state_node: FSMState) -> void:
 
 
 #endregion
-#region Checks
+#region ???
 
 
 ## Returns whether the current state_name matches target_state.
@@ -106,6 +106,28 @@ func is_state(target_state: StringName) -> bool:
 func has_state(target_state: StringName) -> bool:
 	target_state = target_state.to_upper()
 	return _states.has(target_state)
+
+
+## Gets the state of self and all active child states
+func get_full_state() -> Array[FSMState]:
+	if state_node == null:
+		return [] as Array[FSMState]
+
+	var full_state: Array[FSMState] = [ state_node ]
+
+	while true:
+		var deepest := full_state[full_state.size() - 1]
+
+		if not deepest is FSM:
+			break
+		
+		var deepest_state: FSMState = deepest.state_node
+		if deepest_state == null:
+			break
+
+		full_state.append(deepest_state)
+
+	return full_state
 
 
 #region Transitions
