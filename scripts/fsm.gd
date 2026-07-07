@@ -33,6 +33,13 @@ var _state_name: StringName:
 #region Initialization
 
 
+func _init() -> void:
+	deactivated.connect(func():
+		if state_node != null:
+			state_node._active = false
+	)
+
+
 func _enter_tree() -> void:
 	_load_state_nodes()
 
@@ -106,7 +113,7 @@ func get_full_state() -> Array[FSMState]:
 	if state_node == null:
 		return [] as Array[FSMState]
 
-	var full_state: Array[FSMState] = [ state_node ]
+	var full_state: Array[FSMState] = [state_node]
 
 	while true:
 		var deepest := full_state[full_state.size() - 1]
