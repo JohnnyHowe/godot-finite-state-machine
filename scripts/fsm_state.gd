@@ -4,6 +4,7 @@ extends Node
 
 signal activated
 signal deactivated
+signal state_finished
 
 
 @export var _verbose: bool = false

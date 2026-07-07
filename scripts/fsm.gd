@@ -83,15 +83,24 @@ func create_state(state_name: StringName) -> FSMState:
 	return node
 
 
-func add_state(state_node: FSMState) -> void:
-	var key := state_node.name.to_upper()
+func add_state(new_state_node: FSMState) -> void:
+	var key := new_state_node.name.to_upper()
 
 	if has_state(key):
 		push_error("%s already has state_name \"%s\"" % [ self , key])
 		return
 
-	add_child(state_node)
-	_states[key] = state_node
+	add_child(new_state_node)
+
+	new_state_node.state_finished.connect(
+		func():
+			if new_state_node == new_state_node:
+				try_transition_default()
+			else:
+				push_warning("%s state %s emitted finished but it is not active!" % [ self , new_state_node])
+	)
+
+	_states[key] = new_state_node
 
 
 #endregion
