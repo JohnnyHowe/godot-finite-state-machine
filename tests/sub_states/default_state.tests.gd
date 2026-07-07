@@ -9,7 +9,7 @@ func test_activeNestedMachine_transitionsToDefaultState():
 	var attacking := in_play.create_state("ATTACKING")
 	in_play.default_state = moving
 
-	root.force_transition_to("IN_PLAY")
+	root.try_transition_to("IN_PLAY")
 
 	return [
 		TestCaseResult.from_equals(true, in_play.active, "Nested machine should be active"),
@@ -31,10 +31,10 @@ func test_reactivatingNestedMachine_resetsToDefaultState():
 	var destroyed := root.create_state("DESTROYED")
 	in_play.default_state = moving
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("ATTACKING")
-	root.force_transition_to("DESTROYED")
-	root.force_transition_to("IN_PLAY")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("ATTACKING")
+	root.try_transition_to("DESTROYED")
+	root.try_transition_to("IN_PLAY")
 
 	return [
 		TestCaseResult.from_equals(moving, in_play.state_node, "Nested machine should reset to default state"),
@@ -53,7 +53,7 @@ func test_nestedMachineWithoutDefault_doesNotAutoSelectState():
 
 	var moving := in_play.create_state("MOVING")
 
-	root.force_transition_to("IN_PLAY")
+	root.try_transition_to("IN_PLAY")
 
 	return [
 		TestCaseResult.from_equals(true, in_play.active, "Nested machine should be active"),
@@ -74,7 +74,7 @@ func test_invalidDefaultState_doesNotActivateChildState():
 	missing.name = "MISSING"
 	in_play.default_state = missing
 
-	root.force_transition_to("IN_PLAY")
+	root.try_transition_to("IN_PLAY")
 
 	return [
 		TestCaseResult.from_equals(true, in_play.active, "Nested machine should be active"),

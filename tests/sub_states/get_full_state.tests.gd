@@ -28,7 +28,7 @@ func test_singleLevelTransition_returnsActiveState():
 	var root := FSM.new()
 	var start := root.create_state("START")
 
-	root.force_transition_to("START")
+	root.try_transition_to("START")
 
 	return _assert_full_state(root.get_full_state(), [start], "single active state")
 
@@ -38,8 +38,8 @@ func test_singleLevelTransitionUpdate_excludesInactiveState():
 	root.create_state("START")
 	var end := root.create_state("END")
 
-	root.force_transition_to("START")
-	root.force_transition_to("END")
+	root.try_transition_to("START")
+	root.try_transition_to("END")
 
 	return _assert_full_state(root.get_full_state(), [end], "single active state after switch")
 
@@ -48,10 +48,10 @@ func test_invalidTransition_doesNotChangeFullState():
 	var root := FSM.new()
 	var start := root.create_state("START")
 
-	root.force_transition_to("START")
+	root.try_transition_to("START")
 	var before := root.get_full_state()
 
-	root.force_transition_to("MISSING")
+	root.try_transition_to("MISSING")
 
 	var results: Array = _assert_full_state(before, [start], "before invalid transition")
 	results.append_array(_assert_full_state(root.get_full_state(), [start], "after invalid transition"))
@@ -67,8 +67,8 @@ func test_nestedActiveState_returnsRootStateToLeafChain():
 
 	var moving := in_play.create_state("MOVING")
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
 
 	return _assert_full_state(root.get_full_state(), [in_play, moving], "nested active state")
 
@@ -81,7 +81,7 @@ func test_nestedMachineWithoutActiveState_stopsAtNestedMachine():
 	root.add_state(in_play)
 	in_play.create_state("MOVING")
 
-	root.force_transition_to("IN_PLAY")
+	root.try_transition_to("IN_PLAY")
 
 	return _assert_full_state(root.get_full_state(), [in_play], "nested machine without active state")
 
@@ -99,9 +99,9 @@ func test_deepNestedActiveState_returnsEveryActiveStateInOrder():
 
 	var windup := attacking.create_state("WINDUP")
 
-	root.force_transition_to("COMBAT")
-	combat.force_transition_to("ATTACKING")
-	attacking.force_transition_to("WINDUP")
+	root.try_transition_to("COMBAT")
+	combat.try_transition_to("ATTACKING")
+	attacking.try_transition_to("WINDUP")
 
 	return _assert_full_state(root.get_full_state(), [combat, attacking, windup], "deep nested active state")
 
@@ -116,9 +116,9 @@ func test_switchingRootBranch_returnsOnlyActiveRootBranch():
 
 	var destroyed := root.create_state("DESTROYED")
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
-	root.force_transition_to("DESTROYED")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
+	root.try_transition_to("DESTROYED")
 
 	return _assert_full_state(root.get_full_state(), [destroyed], "switched root branch")
 
@@ -133,8 +133,8 @@ func test_switchingNestedBranch_updatesRootFullState():
 	in_play.create_state("MOVING")
 	var attacking := in_play.create_state("ATTACKING")
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
-	in_play.force_transition_to("ATTACKING")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
+	in_play.try_transition_to("ATTACKING")
 
 	return _assert_full_state(root.get_full_state(), [in_play, attacking], "switched nested branch")

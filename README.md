@@ -7,7 +7,7 @@ Small Godot state machine utility for tracking a named state and emitting signal
 ## Public API
 
 - `is_state(target_state)`: Returns whether the current state matches a declared target state.
-- `force_transition_to(target_state)`: Changes to a declared target state or pushes an error for an invalid one.
+- `try_transition_to(target_state)`: Changes to a declared target state or pushes an error for an invalid one.
 - `try_transition_to(target_state)`: Attempts to change state and returns whether it succeeded.
 
 State changes emit signals in this order:

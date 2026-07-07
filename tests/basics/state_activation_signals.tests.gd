@@ -8,7 +8,7 @@ func test_stateActivated_onTransition():
 			activated_calls.append(true)
 	)
 
-	root.force_transition_to(state.name)
+	root.try_transition_to(state.name)
 
 	return TestCaseResult.from_equals(1, activated_calls.size())
 
@@ -24,8 +24,8 @@ func test_stateDeactivated_onTransition():
 			deactivated.append(true)
 	)
 
-	root.force_transition_to(start_state.name)
-	root.force_transition_to(end_state.name)
+	root.try_transition_to(start_state.name)
+	root.try_transition_to(end_state.name)
 
 	return TestCaseResult.from_equals(1, deactivated.size())
 

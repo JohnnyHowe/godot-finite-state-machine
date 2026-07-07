@@ -52,7 +52,7 @@ func test_transitionTargets_areCaseInsensitive():
 	var machine := FSM.new()
 	machine.create_state("Start")
 
-	machine.force_transition_to("start")
+	machine.try_transition_to("start")
 
 	return [
 		TestCaseResult.from_equals(&"START", machine.state_name),

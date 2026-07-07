@@ -4,7 +4,7 @@ func test_activeStateWithNextState_transitionsToNextAndReturnsTrue():
 	var end := machine.create_state("END")
 	start.next_state = end
 
-	machine.force_transition_to("START")
+	machine.try_transition_to("START")
 	var transitioned := machine.try_transition_default()
 
 	return [
@@ -21,7 +21,7 @@ func test_activeStateWithoutNextState_returnsFalseAndMakesNoChange():
 	var start := machine.create_state("START")
 	var end := machine.create_state("END")
 
-	machine.force_transition_to("START")
+	machine.try_transition_to("START")
 	var transitioned := machine.try_transition_default()
 
 	return [

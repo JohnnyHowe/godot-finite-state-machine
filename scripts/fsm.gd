@@ -37,7 +37,7 @@ var _state_name: StringName:
 func _init() -> void:
 	activated.connect(func():
 		if default_state:
-			force_transition_to(default_state.name)
+			try_transition_to(default_state.name)
 	)
 
 	deactivated.connect(func():
@@ -150,21 +150,6 @@ func try_transition_default() -> bool:
 		return try_transition_to(default_state.name)
 
 	return false
-
-
-## Changes to target_state if it is declared.
-## Invalid states push an error and leave the current state_name unchanged.
-func force_transition_to(target_state: StringName) -> void:
-	target_state = target_state.to_upper()
-
-	if not has_state(target_state):
-		_push_missing_state_error(target_state)
-		return
-
-	if _verbose:
-		print("State change request (force) %s->%s." % [state_name, target_state])
-
-	_set_state(target_state)
 
 
 ## Attempts to change to target_state and returns whether the change succeeded.

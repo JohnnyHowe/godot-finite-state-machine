@@ -7,8 +7,8 @@ func test_nestedTransition_marksParentAndChildActive():
 
 	var moving := in_play.create_state("MOVING")
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
 
 	return [
 		TestCaseResult.from_equals(true, in_play.active, "Parent state should be active"),
@@ -26,9 +26,9 @@ func test_switchingNestedState_deactivatesPreviousChildAndActivatesNextChild():
 	var moving := in_play.create_state("MOVING")
 	var attacking := in_play.create_state("ATTACKING")
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
-	in_play.force_transition_to("ATTACKING")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
+	in_play.try_transition_to("ATTACKING")
 
 	return [
 		TestCaseResult.from_equals(true, in_play.active, "Parent state should remain active"),
@@ -47,9 +47,9 @@ func test_switchingRootState_deactivatesNestedParentAndActiveChild():
 	var moving := in_play.create_state("MOVING")
 	var destroyed := root.create_state("DESTROYED")
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
-	root.force_transition_to("DESTROYED")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
+	root.try_transition_to("DESTROYED")
 
 	return [
 		TestCaseResult.from_equals(false, in_play.active, "Nested parent state should be inactive"),
@@ -67,9 +67,9 @@ func test_invalidRootTransition_doesNotChangeNestedActiveFlags():
 
 	var moving := in_play.create_state("MOVING")
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
-	root.force_transition_to("MISSING")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
+	root.try_transition_to("MISSING")
 
 	return [
 		TestCaseResult.from_equals(true, in_play.active, "Parent state should remain active"),
@@ -86,9 +86,9 @@ func test_invalidNestedTransition_doesNotChangeNestedActiveFlags():
 
 	var moving := in_play.create_state("MOVING")
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
-	in_play.force_transition_to("MISSING")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
+	in_play.try_transition_to("MISSING")
 
 	return [
 		TestCaseResult.from_equals(true, in_play.active, "Parent state should remain active"),

@@ -6,7 +6,7 @@ func test_activeStateWithInvalidNextState_returnsFalseAndKeepsCurrentStateActive
 	missing.name = "MISSING"
 	start.next_state = missing
 
-	machine.force_transition_to("START")
+	machine.try_transition_to("START")
 	var transitioned := machine.try_transition_default()
 
 	return [
@@ -26,7 +26,7 @@ func test_invalidDefaultDoesNotDeactivateExistingActiveState():
 	missing.name = "MISSING"
 	machine.default_state = missing
 
-	machine.force_transition_to("START")
+	machine.try_transition_to("START")
 	var transitioned := machine.try_transition_default()
 
 	return [

@@ -31,8 +31,8 @@ func test_nestedMachineWithActiveChild_usesChildNextState():
 	var attacking := in_play.create_state("ATTACKING")
 	moving.next_state = attacking
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
 	var transitioned := in_play.try_transition_default()
 
 	return [
@@ -55,8 +55,8 @@ func test_rootTryTransitionDefault_doesNotAdvanceNestedChildMachine():
 	var attacking := in_play.create_state("ATTACKING")
 	moving.next_state = attacking
 
-	root.force_transition_to("IN_PLAY")
-	in_play.force_transition_to("MOVING")
+	root.try_transition_to("IN_PLAY")
+	in_play.try_transition_to("MOVING")
 	var transitioned := root.try_transition_default()
 
 	return [
