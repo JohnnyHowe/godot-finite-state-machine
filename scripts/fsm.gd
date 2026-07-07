@@ -6,8 +6,8 @@ signal pre_state_change
 signal state_change_values(previous: StringName, current: StringName)
 signal state_change
 
-@export var _is_root: bool = true
-@export var _assert_all_children_are_states: bool = true
+@export var is_root: bool = true
+@export var assert_all_children_are_states: bool = true
 
 
 var states: Array[StringName]:
@@ -43,7 +43,7 @@ func _init() -> void:
 func _enter_tree() -> void:
 	_load_state_nodes()
 
-	if _is_root:
+	if is_root:
 		# TODO assert that there is actually no parent FSM 
 		_active = true
 
@@ -55,7 +55,7 @@ func _enter_tree() -> void:
 func _load_state_nodes() -> void:
 	for node in get_children():
 		if node is not FSMState:
-			assert(not _assert_all_children_are_states, "FSM %s has child %s that is not FSM states!" % [ self , node])
+			assert(not assert_all_children_are_states, "FSM %s has child %s that is not FSM states!" % [ self , node])
 		else:
 			_states[node.name.to_upper()] = node
 
