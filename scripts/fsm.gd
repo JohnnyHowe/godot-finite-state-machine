@@ -53,9 +53,14 @@ func _enter_tree() -> void:
 		# TODO assert that there is actually no parent FSM 
 		_active = true
 
-	if _states.size() == 0:
-		push_error("State machine %s does not have any states!" % [self])
-		return
+	# print([get_parent(), self, active, default_state])
+	if active and state_node == null:
+		# print("%s transition to %s" % [self, default_state])
+		try_transition_to(default_state.name)
+
+	# if _states.size() == 0:
+	# 	push_error("State machine %s does not have any states!" % [self])
+	# 	return
 
 
 func _load_state_nodes() -> void:
