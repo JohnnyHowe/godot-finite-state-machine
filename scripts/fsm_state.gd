@@ -7,6 +7,7 @@ signal deactivated
 
 
 @export var _verbose: bool = false
+@export var next_state: FSMState
 
 
 var active: bool:

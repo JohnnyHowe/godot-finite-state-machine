@@ -139,6 +139,13 @@ func get_full_state() -> Array[FSMState]:
 #region Transitions
 
 
+## Go to the next state defined by the current.
+## If no current state active, goes to the default for the FSM if it exists, otherwise no change.
+## Returns whether a transition was actually made.
+func try_transition_default() -> bool:
+	return false
+
+
 ## Changes to target_state if it is declared.
 ## Invalid states push an error and leave the current state_name unchanged.
 func force_transition_to(target_state: StringName) -> void:
