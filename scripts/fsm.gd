@@ -90,7 +90,8 @@ func add_state(new_state_node: FSMState) -> void:
 		push_error("%s already has state_name \"%s\"" % [ self , key])
 		return
 
-	add_child(new_state_node)
+	if not _try_add_as_child_node(new_state_node):
+		return
 
 	new_state_node.state_finished.connect(
 		func():
@@ -101,6 +102,22 @@ func add_state(new_state_node: FSMState) -> void:
 	)
 
 	_states[key] = new_state_node
+
+
+## Returns whether the node was added.
+## Fails only if there is already a different parent.
+func _try_add_as_child_node(new_state_node: FSMState) -> bool:
+	var current_parent := new_state_node.get_parent()
+
+	if current_parent == self:
+		return true
+
+	if current_parent == null:
+		add_child(new_state_node)
+		return true
+
+	push_error("%s could not add child %s as it already has a different parent (%s)!" % [self, new_state_node, current_parent])
+	return false
 
 
 #endregion
