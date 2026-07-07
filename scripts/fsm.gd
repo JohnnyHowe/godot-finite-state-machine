@@ -54,7 +54,7 @@ func _enter_tree() -> void:
 		_active = true
 
 	if _states.size() == 0:
-		push_error("State machine %s does not have any states!" % [get_path()])
+		push_error("State machine %s does not have any states!" % [self])
 		return
 
 
@@ -213,7 +213,7 @@ func _set_state(target_state: StringName) -> void:
 
 func _push_missing_state_error(target_state: StringName) -> void:
 	var message := "\n".join([
-		"State \"%s\" does not exist on %s!" % [target_state, get_path()],
+		"State \"%s\" does not exist on %s!" % [target_state, self],
 		"\tvalid states: %s" % [_states]
 	])
 	push_error(message)
