@@ -17,9 +17,6 @@ var states: Array[StringName]:
 var _states: Dictionary[StringName, FSMState] = {}
 
 
-@export var _initial_state: StringName
-
-
 var state_name: StringName:
 	get:
 		return _state_name
@@ -46,10 +43,6 @@ func _enter_tree() -> void:
 	if _states.size() == 0:
 		push_error("State machine %s does not have any states!" % [get_path()])
 		return
-
-	if not has_state(_initial_state):
-		push_warning("%s initial state_name (\"%s\") not found! Transitioning to first found." % [ self , _initial_state])
-		force_transition_to(_states.keys()[0])
 
 
 func _load_state_nodes() -> void:
