@@ -8,6 +8,7 @@ signal state_change
 
 @export var is_root: bool = true
 @export var assert_all_children_are_states: bool = true
+@export var default_state: FSMState
 
 
 var states: Array[StringName]:
@@ -34,6 +35,11 @@ var _state_name: StringName:
 
 
 func _init() -> void:
+	activated.connect(func():
+		if default_state:
+			force_transition_to(default_state.name)
+	)
+
 	deactivated.connect(func():
 		if state_node != null:
 			state_node._active = false

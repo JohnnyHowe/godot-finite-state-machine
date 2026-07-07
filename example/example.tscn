@@ -18,7 +18,6 @@ _verbose = true
 
 [node name="InPlay" type="Node" parent="FSM" unique_id=1300673297]
 script = ExtResource("1_iqwhg")
-_is_root = false
 _verbose = true
 metadata/_custom_type_script = "uid://dad86vcrwf4he"
 
