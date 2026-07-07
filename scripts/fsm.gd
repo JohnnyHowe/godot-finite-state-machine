@@ -63,7 +63,7 @@ func _load_state_nodes() -> void:
 		if node is not FSMState:
 			assert(not assert_all_children_are_states, "FSM %s has child %s that is not FSM states!" % [ self , node])
 		else:
-			_states[node.name.to_upper()] = node
+			add_state(node)
 
 	if _verbose:
 		var state_names_bullet_points = _states.keys().map(func(state_name): return "\n - %s" % state_name)
