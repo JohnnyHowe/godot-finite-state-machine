@@ -169,7 +169,7 @@ func get_full_state() -> Array[FSMState]:
 ## If no current state active, goes to the default for the FSM if it exists, otherwise no change.
 ## Returns whether a transition was actually made.
 func try_transition_default() -> bool:
-	if state_node != null:
+	if state_node != null and state_node.next_state != null:
 		return try_transition_to(state_node.next_state.name)
 
 	if default_state != null:
