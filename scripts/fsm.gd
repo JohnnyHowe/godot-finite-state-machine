@@ -11,9 +11,9 @@ signal state_change
 @export var default_state: FSMState
 
 
-var states: Array[StringName]:
+var states: Dictionary[StringName, FSMState]:
 	get:
-		return _states.keys()
+		return _states.duplicate()
 
 var _states: Dictionary[StringName, FSMState] = {}
 

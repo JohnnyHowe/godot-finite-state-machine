@@ -45,7 +45,7 @@ func test_stateNames_areStoredInCanonicalUppercase():
 	var machine := FSM.new()
 	machine.create_state("Start")
 
-	return TestCaseResult.from_equals([&"START"], machine.states)
+	return TestCaseResult.from_equals([&"START"], machine.states.keys())
 
 
 func test_transitionTargets_areCaseInsensitive():
