@@ -3,6 +3,11 @@
 class_name FSM
 extends FSMState
 
+#region Namespace Exposure
+const AnimationState := preload("./state_extensions/leaves/animation_state.gd")
+#endregion
+
+
 signal pre_state_change_values(current: StringName, next: StringName)
 signal pre_state_change
 signal state_change_values(previous: StringName, current: StringName)
