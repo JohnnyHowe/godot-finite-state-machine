@@ -1,3 +1,5 @@
+## OBSOLETE
+## Everything should be done through state_extensions
 class_name FSM
 extends FSMState
 
