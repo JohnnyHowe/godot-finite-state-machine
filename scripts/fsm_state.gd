@@ -1,3 +1,4 @@
+@icon("../resources/FSM.svg")
 class_name FSMState
 extends Node
 
