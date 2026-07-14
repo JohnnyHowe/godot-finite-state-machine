@@ -20,6 +20,8 @@ func _start() -> void:
 		push_warning("animation_state %s cannot play animation \"%s\" as it does not exist on player %s", [self, animation_name, animation_player])
 		return
 
+	if _verbose:
+		print("[%s] animation_state playing \"%s\"" % [Engine.get_frames_drawn(), animation_name])
 	animation_player.play(animation_name)
 
 
@@ -27,7 +29,10 @@ func _on_animation_finished(animation_name: StringName) -> void:
 	if not active:
 		return
 
-	if animation_name != animation_name:
+	if self.animation_name != animation_name:
 		return
 
+
+	if _verbose:
+		print("[%s] animation_state target animation (\"%s\") finished!" % [Engine.get_frames_drawn(), animation_name])
 	state_finished.emit()
