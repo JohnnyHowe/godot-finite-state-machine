@@ -4,6 +4,8 @@ class_name FSM
 extends FSMState
 
 #region Namespace Exposure
+const Repeat := preload("./state_extensions/containers/repeat.gd")
+
 const AnimationState := preload("./state_extensions/leaves/animation_state.gd")
 #endregion
 
