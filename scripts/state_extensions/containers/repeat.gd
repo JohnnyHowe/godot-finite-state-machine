@@ -14,6 +14,8 @@ func _init() -> void:
 
 func _deactivate() -> void:
 	_current_state_index = -1
+	if to_repeat.state_finished.is_connected(_on_child_finished):
+		to_repeat.state_finished.disconnect(_on_child_finished)
 	to_repeat._active = false
 
 
