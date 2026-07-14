@@ -8,7 +8,13 @@ var _current_state_index: int = -1
 
 
 func _init() -> void:
+	deactivated.connect(_deactivate)
 	activated.connect(_start)
+
+
+func _deactivate() -> void:
+	_current_state_index = -1
+	to_repeat._active = false
 
 
 func _start() -> void:
