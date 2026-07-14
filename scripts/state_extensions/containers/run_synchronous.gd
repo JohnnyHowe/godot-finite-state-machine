@@ -3,7 +3,7 @@ extends FSMState
 
 
 var _states: Array[FSMState] = []
-var _current_state_index :int = -1
+var _current_state_index: int = -1
 
 
 func _init() -> void:
@@ -38,7 +38,7 @@ func _on_child_finished() -> void:
 func _prompt_start_next_state() -> void:
 	if not active:
 		return
-
+		
 	if _current_state_index >= _states.size():
 		state_finished.emit()
 	
