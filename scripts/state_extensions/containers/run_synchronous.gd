@@ -31,6 +31,7 @@ func _start() -> void:
 
 
 func _on_child_finished() -> void:
+	_states[_current_state_index]._active = false
 	_current_state_index += 1
 	_prompt_start_next_state()
 
@@ -38,10 +39,10 @@ func _on_child_finished() -> void:
 func _prompt_start_next_state() -> void:
 	if not active:
 		return
-		
+
 	if _current_state_index >= _states.size():
 		state_finished.emit()
-	
+
 	else:
 		var state := _states[_current_state_index]
 		state.state_finished.connect(_on_child_finished, CONNECT_ONE_SHOT)
@@ -50,7 +51,6 @@ func _prompt_start_next_state() -> void:
 
 
 func _activate_state(state: FSMState) -> void:
-	state._active = false
 	state._active = true
 
 
