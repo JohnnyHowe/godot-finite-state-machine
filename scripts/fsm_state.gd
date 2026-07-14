@@ -23,10 +23,9 @@ var _active: bool = false:
 		_active = value
 		if value:
 			if _verbose:
-				print("%s activated" % self)
+				print("[%s] %s activated" % [Engine.get_frames_drawn(), self])
 			activated.emit()
 		else:
 			if _verbose:
-				print("%s deactivated" % self)
+				print("[%s] %s deactivated" % [Engine.get_frames_drawn(), self])
 			deactivated.emit()
-
