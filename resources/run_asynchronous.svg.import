@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cokke4hwvfxk4"
-path="res://.godot/imported/FSM.svg-ebfba6d1307e513ff94239ff4ba882a3.ctex"
+uid="uid://ct8ahkc4gigui"
+path="res://.godot/imported/run_asynchronous.svg-3c4ac3d0e81c0e982ee9491e62d326ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/godot-finite-state-machine/resources/FSM.svg"
-dest_files=["res://.godot/imported/FSM.svg-ebfba6d1307e513ff94239ff4ba882a3.ctex"]
+source_file="res://addons/godot-finite-state-machine/resources/run_asynchronous.svg"
+dest_files=["res://.godot/imported/run_asynchronous.svg-3c4ac3d0e81c0e982ee9491e62d326ec.ctex"]
 
 [params]
 

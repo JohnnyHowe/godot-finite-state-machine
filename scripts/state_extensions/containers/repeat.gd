@@ -1,3 +1,4 @@
+@icon("../../../resources/repeat.svg")
 extends FSMState
 
 

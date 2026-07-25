@@ -1,3 +1,4 @@
+@icon("../../../resources/run_asynchronous.svg")
 ## Activates direct children based on own state.
 ## So when this is active, all children are set to active, and same for when this is deactivated.
 extends FSMState

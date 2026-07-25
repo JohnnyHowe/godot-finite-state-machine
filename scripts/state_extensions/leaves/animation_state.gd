@@ -1,3 +1,4 @@
+@icon("../../../resources/animation_state.svg")
 ## Plays an animation on activated.
 ## Emits state_finished when animation is finished
 extends FSMState

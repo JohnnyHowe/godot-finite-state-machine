@@ -1,3 +1,4 @@
+@icon("../../../resources/wait_for_time.svg")
 extends FSMState
 
 

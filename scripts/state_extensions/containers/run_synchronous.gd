@@ -1,3 +1,4 @@
+@icon("../../../resources/run_synchronous.svg")
 ## Runs all child states in order
 extends FSMState
 

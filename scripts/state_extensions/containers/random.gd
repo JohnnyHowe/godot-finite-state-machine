@@ -1,3 +1,4 @@
+@icon("../../../resources/random.svg")
 extends FSMState
 
 const DEFAULT_WEIGHT: float = 1
