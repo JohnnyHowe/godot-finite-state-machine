@@ -2,7 +2,7 @@
 	"name": "godot-finite-state-machine",
 	"dependencies": {
 		"gdscript-script-test-runner": {
-			"url": null,
+			"url": "https://github.com/JohnnyHowe/gdscript-script-test-runner.git",
 			"revision": null
 		}
 	}
