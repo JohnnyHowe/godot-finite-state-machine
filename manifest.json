@@ -1,0 +1,9 @@
+{
+	"name": "godot-finite-state-machine",
+	"dependencies": {
+		"gdscript-script-test-runner": {
+			"url": null,
+			"revision": null
+		}
+	}
+}

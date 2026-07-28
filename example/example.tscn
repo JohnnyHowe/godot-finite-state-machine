@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3qgbh04ys1yl"]
 
-[ext_resource type="Script" uid="uid://dad86vcrwf4he" path="res://addons/finite_state_machine/scripts/fsm.gd" id="1_iqwhg"]
-[ext_resource type="Script" uid="uid://beo8d22craqtd" path="res://addons/finite_state_machine/scripts/fsm_state.gd" id="3_yx6gr"]
+[ext_resource type="Script" uid="uid://dad86vcrwf4he" path="res://addons/godot-finite-state-machine/scripts/fsm.gd" id="1_iqwhg"]
+[ext_resource type="Script" uid="uid://beo8d22craqtd" path="res://addons/godot-finite-state-machine/scripts/fsm_state.gd" id="3_yx6gr"]
 
 [node name="Example" type="Control" unique_id=200112619]
 layout_mode = 3
